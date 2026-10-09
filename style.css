@@ -1,0 +1,422 @@
+:root{--bg:#fdfbf7;--surf:#fff;--ink:#26332c;--mute:#4b5d53;--g:#1d4a35;--g2:#2f6b4c;--sage:#f0f5f1;--gold:#e7a21b;--goldink:#3b2a00;--line:#e5e3da;--hero:#0f291e;--heroink:#fdfbf7;--ayur-accent:#a96325;--ayur-gold:#e5c998;--ayur-cream:#fdfbf7;--ayur-dark:#0f291e;--ayur-green:#1d4a35;--focus:#e7a21b;color-scheme:light}
+@media(prefers-color-scheme:dark){:root{--bg:#111a15;--surf:#19251e;--ink:#edf3ec;--mute:#b6c4b9;--sage:#1d2c23;--line:#34483a;--hero:#0b1510;--heroink:#f7f8f4;--ayur-dark:#0b1510;--ayur-green:#1d4a35;--g:#82bd92;--g2:#92c99e;color-scheme:dark}}
+html{scroll-behavior:smooth;scroll-padding-top:calc(76px + env(safe-area-inset-top,0px))}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.75 Hind,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:"Tiro Devanagari Hindi",Georgia,serif;font-weight:500;line-height:1.3;margin:0}
+h2{font-size:clamp(1.7rem,4vw,2.5rem)}h3{font-size:1.25rem}
+p{margin:0}
+a{color:inherit}
+.w{width:min(1200px,100% - 40px);margin-inline:auto}
+section{padding:clamp(56px,8vw,104px) 0}
+.lead{color:var(--mute);max-width:60ch;margin-top:14px}
+.btn:active,.quiz-answer:active,.slider-dot:active{transform:scale(.97)}
+:focus-visible{outline:3px solid var(--focus);outline-offset:3px;border-radius:6px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:52px;padding:0 28px;border:0;border-radius:999px;background:var(--ayur-accent);color:#fff;font:600 1.05rem Inter,sans-serif;text-decoration:none;cursor:pointer;transition:transform .18s,box-shadow .18s,background .18s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 10px 24px -8px rgba(184,122,59,.7);background:#a06b32}
+.btn:focus,.btn:focus-visible,.btn:active{color:#fff}
+.btn:focus-visible{background:#e7a21b!important;color:#1d3024!important;outline:3px solid #fff;outline-offset:3px;box-shadow:0 0 0 6px rgba(231,162,27,.45)}
+.btn:focus-visible,.btn.ghost:focus-visible{background:#e7a21b!important;color:#1d3024!important}
+.hero .btn:focus-visible,.final .btn:focus-visible,.sticky .btn:focus-visible{background:#e7a21b!important;color:#1d3024!important}
+.btn:active{background:#e7a21b;color:#1d3024}
+.btn.ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
+/* header */
+header{position:sticky;top:0;z-index:20;background:rgba(253,251,247,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);padding-top:env(safe-area-inset-top,0px)}
+header .w.header-inner{display:flex;align-items:center;justify-content:space-between;height:72px;gap:24px;position:relative}
+.logo{font:600 1.35rem "Playfair Display","Tiro Devanagari Hindi",serif;text-decoration:none;color:var(--ayur-dark);display:flex;align-items:center;gap:10px;letter-spacing:-.01em}
+.logo svg{width:28px;height:28px;color:var(--ayur-green)}
+.nav{display:flex;align-items:center;gap:28px}
+.nav-link{font:500 .95rem Inter,sans-serif;color:var(--mute);text-decoration:none;transition:color .2s}
+.nav-link:hover{color:var(--ayur-dark)}
+.nav-link[aria-current="location"]{color:var(--ayur-green);font-weight:700}
+.menu-toggle{display:none}
+header .btn{min-height:42px;padding:0 22px;font-size:.95rem;font-weight:600}
+header.is-scrolled{box-shadow:0 8px 28px -24px rgba(15,41,30,.65)}
+/* hero */
+.hero{background:var(--ayur-dark);color:var(--heroink);padding:clamp(48px,8vw,96px) 0;overflow:hidden;position:relative}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 80% 20%,rgba(184,122,59,.14),transparent 55%),radial-gradient(circle at 20% 80%,rgba(26,83,53,.45),transparent 55%);pointer-events:none}
+.hero::after{content:"";position:absolute;right:-160px;top:-120px;width:520px;height:520px;border-radius:50%;border:1px solid rgba(253,251,247,.08);box-shadow:0 0 0 60px rgba(253,251,247,.025),0 0 0 120px rgba(253,251,247,.02)}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center;position:relative;z-index:1}
+.hero-copy{display:flex;flex-direction:column;gap:18px}
+.eyebrow{display:inline-block;padding:7px 14px;border-radius:999px;background:rgba(184,122,59,.14);color:var(--ayur-gold);font:600 .9rem/1.5 Inter,"Tiro Devanagari Hindi",sans-serif;letter-spacing:.02em;width:fit-content;border:1px solid rgba(184,122,59,.3)}
+.hero h1{font-size:clamp(2.2rem,5.4vw,3.9rem);line-height:1.18;letter-spacing:-.02em}
+.hero p.sub{margin-top:6px;font-size:1.15rem;color:#cfdcc8;max-width:52ch;line-height:1.7}
+.hero-quote{font:clamp(1.45rem,3vw,2rem)/1.5 "Tiro Devanagari Hindi",serif;color:#f1d8ae}
+.hero-question{font:600 clamp(1.25rem,2.8vw,1.7rem)/1.55 "Tiro Devanagari Hindi",serif;color:#fff;max-width:32ch}
+.hero .cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:14px}
+.hero .btn.ghost{color:#fdfbf7;border-color:rgba(253,251,247,.55)}
+.hero .btn.ghost:hover,.hero .btn.ghost:focus,.hero .btn.ghost:focus-visible,.hero .btn.ghost:active{background:#e7a21b!important;border-color:#e7a21b;color:#1d3024!important}
+.hero .note{margin-top:16px;font-size:.92rem;color:#a9bfb0;line-height:1.6}
+.hero-media{position:relative}
+.hero-product-card{position:relative;isolation:isolate;overflow:hidden;padding:14px clamp(20px,3vw,30px) 28px;display:flex;flex-direction:column;gap:15px;border:1px solid rgba(253,251,247,.16);border-radius:28px;background:linear-gradient(145deg,#f9f6ed 0%,#f1e8d6 100%);color:#26382e;box-shadow:0 40px 80px -40px rgba(0,0,0,.55)}
+.hero-product-card::after{content:"";position:absolute;z-index:-1;right:-90px;top:-100px;width:290px;height:290px;border:1px solid rgba(26,83,53,.1);border-radius:50%;box-shadow:0 0 0 35px rgba(26,83,53,.035),0 0 0 70px rgba(26,83,53,.025)}
+.hero-illustration{display:block;width:calc(100% + 24px);height:auto;max-height:300px;aspect-ratio:1.3;object-fit:cover;object-position:center 43%;margin:0 -12px;border-radius:19px;border:1px solid rgba(26,83,53,.1);background:#f0e6d5}
+.hero-product-brand{display:flex;align-items:center;gap:10px;color:#173d2b;font:600 1.6rem "Playfair Display","Tiro Devanagari Hindi",serif}
+.hero-product-brand svg{width:32px;height:32px;color:var(--ayur-green)}
+.hero-product-card .eyebrow{color:#70420d}
+.hero-product-card h2{font-size:clamp(1.6rem,3vw,2.25rem);color:#173d2b;max-width:16ch}
+.hero-product-copy{max-width:38ch;color:#52615b}
+.hero-pillars{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.hero-pillars span{padding:12px 14px;border:1px solid rgba(26,83,53,.12);border-radius:12px;background:rgba(255,255,255,.68);color:#294b39;font-size:.95rem;font-weight:600}
+.hero-product-note{margin-top:4px;color:#52615b;font-size:.88rem}
+/* intro */
+.intro{background:linear-gradient(180deg,var(--hero) 0%,#163d2b 100%);color:var(--heroink)}
+.intro .w{max-width:860px}
+.intro h2{color:#fdfbf7}
+.intro .lead{color:#cfdcc8}
+.intro .lead b{color:#fdfbf7}
+.intro .pill{margin-top:28px}
+.intro .pill b{color:#fdfbf7}
+.intro .pill p{color:#a9bfb0}
+/* problem */
+.problem{background:linear-gradient(180deg,var(--bg) 0%,var(--sage) 100%)}
+.prob-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:start}
+.prob-copy{display:flex;flex-direction:column;gap:14px}
+.prob-copy h2{position:relative;padding-left:18px}
+.prob-copy h2::before{content:"";position:absolute;left:0;top:6px;bottom:6px;width:4px;background:var(--ayur-accent);border-radius:2px}
+.parent-note{position:sticky;top:96px;padding:clamp(22px,3vw,30px);border:1px solid var(--line);border-radius:24px;background:var(--surf);box-shadow:0 24px 48px -34px rgba(23,61,43,.32)}
+.parent-note-illustration{display:block;width:100%;height:auto;max-height:220px;object-fit:contain;object-position:center;border-radius:16px;margin-bottom:16px;background:#f3ead9}
+.parent-note-mark{display:block;color:var(--ayur-accent);font:5rem/.7 Georgia,serif}
+.parent-note h3{margin:18px 0 4px;color:var(--ayur-green)}
+.parent-note p{color:var(--mute)}
+.parent-note-divider{display:block;height:1px;margin:24px 0;background:var(--line)}
+.checks{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;margin-top:28px;padding:0;list-style:none}
+.checks li{display:flex;gap:12px;align-items:flex-start;background:var(--surf);border:1px solid var(--line);border-radius:14px;padding:14px 16px;transition:transform .2s,box-shadow .2s}
+.checks li:hover{transform:translateY(-2px);box-shadow:0 8px 20px -16px rgba(23,61,43,.25)}
+.checks svg{flex:none;width:22px;height:22px;margin-top:3px;color:var(--g2)}
+.quote{margin-top:36px;padding:28px 32px;background:linear-gradient(135deg,var(--sage) 0%,#e8efe6 100%);border-radius:20px;font:clamp(1.25rem,3vw,1.75rem)/1.5 "Tiro Devanagari Hindi","Playfair Display",serif;border-left:4px solid var(--ayur-accent);box-shadow:0 12px 28px -22px rgba(23,61,43,.18)}
+.quote span{display:block;margin-top:10px;font:400 1.02rem Inter,sans-serif;color:var(--mute)}
+/* herbs */
+.herbs{background:var(--sage)}
+.hgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:20px;margin-top:40px}
+.herb{background:var(--surf);border-radius:22px 22px 22px 4px;padding:28px 24px;border:1px solid var(--line);box-shadow:0 14px 30px -22px rgba(23,61,43,.18);transition:transform .25s,box-shadow .25s}
+.herb:hover{transform:translateY(-4px);box-shadow:0 22px 40px -24px rgba(23,61,43,.22)}
+.herb:nth-child(even){border-radius:22px 22px 4px 22px}
+.herb svg{width:40px;height:40px;color:var(--g2)}
+.herb h3{margin:14px 0 8px;font-size:1.5rem}
+.herb p{color:var(--mute);font-size:.98rem;line-height:1.65}
+.formula{margin-top:32px;font:1.25rem "Tiro Devanagari Hindi","Playfair Display",serif;color:var(--ayur-green);text-align:center;padding:20px;background:var(--surf);border-radius:16px;border:1px solid var(--line);box-shadow:0 10px 24px -18px rgba(23,61,43,.18)}
+/* support pillars */
+.pill{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:0;margin-top:40px;border-block:1px solid var(--line)}
+.pill div{padding:28px 24px;border-left:1px solid var(--line);transition:background .2s}
+.pill div:hover{background:rgba(184,122,59,.04)}
+.pill div:first-child{border-left:0;padding-left:0}
+.pill b{display:block;font:1.15rem "Tiro Devanagari Hindi","Playfair Display",serif;margin-bottom:6px;color:var(--ayur-dark)}
+.pill p{color:var(--mute);font-size:.98rem;line-height:1.65}
+/* routine */
+.routine{background:linear-gradient(180deg,var(--ayur-green) 0%,#163d2b 100%);color:#fdfbf7}
+.routine-intro{margin-top:12px;max-width:68ch;color:#d6e3d8}
+.tl{list-style:none;padding:0;margin:44px 0 0;display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative}
+.tl::before{content:"";position:absolute;left:0;right:0;top:15px;height:2px;background:linear-gradient(90deg,transparent,rgba(253,251,247,.35),transparent)}
+.tl li{padding:0 20px 0 0;position:relative}
+.tl li::before{content:"";display:block;width:32px;height:32px;border-radius:50%;background:var(--ayur-gold);border:6px solid var(--ayur-green);box-shadow:0 0 0 2px var(--ayur-gold);margin-bottom:20px;transition:transform .2s}
+.tl li:hover::before{transform:scale(1.15)}
+.tl h3{font-size:1.3rem;margin-bottom:8px;color:#fdfbf7}
+.tl p{color:#cfe0d3;font-size:.98rem;line-height:1.65}
+.goal{margin-top:48px;max-width:62ch;font:clamp(1.25rem,2.6vw,1.6rem)/1.55 "Tiro Devanagari Hindi","Playfair Display",serif;color:#fdfbf7}
+/* guidance */
+.guidance-card{max-width:760px;margin-top:28px;padding:26px 28px;background:var(--sage);border:1px solid var(--line);border-radius:18px}
+.guidance-card h3{color:var(--ayur-green);margin-bottom:8px}
+.guidance-card p{color:var(--mute)}
+.ref{margin-top:28px;padding:20px 24px;border-left:4px solid var(--ayur-accent);background:var(--sage);border-radius:0 14px 14px 0;max-width:72ch}
+/* trust */
+.reviews{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;margin-top:36px}
+figure{margin:0;background:var(--surf);border:1px solid var(--line);border-radius:18px;padding:26px;box-shadow:0 12px 28px -22px rgba(23,61,43,.18);transition:transform .2s}
+figure:hover{transform:translateY(-3px)}
+figure blockquote{margin:10px 0 14px;font:1.05rem/1.6 "Tiro Devanagari Hindi","Playfair Display",serif}
+figcaption{color:var(--mute);font-size:.95rem}
+.certs{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-top:36px}
+.cert{border:1.5px solid var(--line);border-radius:14px;padding:18px 20px;background:var(--surf);box-shadow:0 10px 24px -18px rgba(23,61,43,.18);transition:transform .2s,box-shadow .2s}
+.cert:hover{transform:translateY(-3px);box-shadow:0 18px 32px -20px rgba(23,61,43,.22)}
+.cert b{display:block;font:1.35rem "Tiro Devanagari Hindi","Playfair Display",serif;color:var(--ayur-dark)}
+.cert span{color:var(--mute);font-size:.92rem}
+.ph{background:linear-gradient(135deg,#fffaf1,var(--surf))}
+.placeholder-label{display:inline-block;padding:4px 10px;border-radius:999px;background:var(--sage);color:var(--ayur-green);font-size:.85rem;font-weight:600}
+/* offer + form */
+.offer{background:var(--sage)}
+.ogrid{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:start}
+.offer-placeholder{display:grid;gap:4px;margin-top:20px;padding:16px 18px;border:1px dashed #bda987;border-radius:14px;background:#fffaf1;color:#65451d}
+.offer-placeholder b{font-size:1rem}
+.offer-placeholder span{font-size:.92rem;line-height:1.55}
+.incl{list-style:none;padding:0;margin:28px 0 0;display:grid;gap:12px}
+.incl li{display:flex;gap:14px;background:var(--surf);border-radius:14px;padding:16px 18px;border:1px solid var(--line);box-shadow:0 10px 24px -18px rgba(23,61,43,.18);transition:transform .2s}
+.incl li:hover{transform:translateX(4px)}
+.incl svg{flex:none;width:24px;height:24px;color:var(--g2);margin-top:3px}
+.incl b{display:block}
+.incl span{color:var(--mute);font-size:.95rem}
+.form{background:var(--surf);border-radius:26px;padding:34px 30px;border:1px solid var(--line);box-shadow:0 30px 50px -36px rgba(23,61,43,.5);position:sticky;top:90px}
+.form h2{font-size:1.8rem}
+.form-lead{margin-top:6px}
+.form-note{margin-top:14px;padding:12px 14px;border-radius:10px;background:#fff7e9;color:#65451d;font-size:.92rem;line-height:1.55}
+label{display:block;margin-top:20px;font-weight:600}
+input{width:100%;min-height:54px;margin-top:6px;padding:0 16px;border:1.5px solid var(--line);border-radius:12px;background:var(--bg);color:var(--ink);font:inherit;transition:border-color .2s,box-shadow .2s}
+input:focus{border-color:var(--ayur-green);outline:3px solid rgba(184,122,59,.25)}
+input[aria-invalid="true"]{border-color:#c0392b}
+.err{color:#c0392b;font-size:.92rem;min-height:1.4em;margin-top:4px}
+.form .btn{width:100%;margin-top:18px}
+.safe{margin-top:14px;color:var(--mute);font-size:.92rem;text-align:center;min-height:1.6em}
+/* faq */
+details{border-bottom:1px solid var(--line);padding:6px 0;transition:background .2s}
+details:hover{background:rgba(184,122,59,.02)}
+summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:16px;align-items:center;padding:16px 0;font:1.2rem "Tiro Devanagari Hindi","Playfair Display",serif}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font:300 1.8rem Inter,sans-serif;color:var(--ayur-green);transition:transform .25s}
+details[open] summary::after{transform:rotate(45deg)}
+details p{padding:0 0 18px;color:var(--mute);max-width:70ch}
+/* final */
+.final{background:linear-gradient(160deg,#0f291e 0%,#1a5335 55%,#163d2b 100%);color:var(--heroink);text-align:center;position:relative;overflow:hidden}
+.final::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 0%,rgba(184,122,59,.12),transparent 60%);pointer-events:none}
+.final .w{position:relative;z-index:1}
+.final h2{font-size:clamp(1.9rem,4.6vw,3rem);max-width:20ch;margin-inline:auto}
+.final p{max-width:56ch;margin:16px auto 0;color:#cfdcc8}
+.final .three{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 28px;margin:28px 0 36px;font:1.25rem "Tiro Devanagari Hindi","Playfair Display",serif}
+.final .btn{margin-top:4px}
+footer{padding:36px 0 110px;color:var(--mute);font-size:.92rem}
+footer h3{font-size:1.1rem;color:var(--ink);margin-bottom:8px}
+footer p+p{margin-top:8px}
+.disclaimer{background:#f4f0e8}
+.disclaimer-placeholder{margin-top:24px;padding:24px 28px;border:1px dashed #bda987;border-radius:16px;background:var(--surf);color:var(--mute);font-size:1.05rem}
+.footer-inner{display:flex;align-items:flex-start;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.footer-nav{display:flex;flex-wrap:wrap;gap:12px 20px}
+.footer-nav a{color:var(--mute);text-decoration-thickness:1px;text-underline-offset:3px}
+.sticky{display:none}
+.skip-link{position:absolute;left:16px;top:-80px;z-index:100;padding:10px 16px;background:#fff;color:#173d2b;border:2px solid var(--ayur-green);border-radius:8px}
+.skip-link:focus{top:12px}
+@media(max-width:860px){
+ .hero .w,.ogrid,.prob-grid{grid-template-columns:1fr}
+ .form{position:static}
+ .tl{grid-template-columns:1fr;gap:28px}.tl::before{left:15px;right:auto;top:0;bottom:0;width:2px;height:auto}
+ .tl li{padding:0 0 0 52px}.tl li::before{position:absolute;left:0;top:0;margin:0}
+ .pill div{border-left:0;border-top:1px solid var(--line);padding-left:0}.pill div:first-child{border-top:0}
+ .parent-note{position:static}
+ .sticky{display:block;position:fixed;left:0;right:0;bottom:0;z-index:30;padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px));background:var(--bg);border-top:1px solid var(--line)}
+ .sticky .btn{width:100%}
+ header .w.header-inner{height:64px;gap:8px}
+ .logo{font-size:1.12rem;gap:7px}
+ .logo svg{width:24px;height:24px}
+ header .header-cta{min-height:38px;padding:0 11px;font-size:.85rem;white-space:nowrap}
+ .menu-toggle{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;flex:none;width:40px;height:40px;padding:8px;border:1px solid var(--line);border-radius:12px;background:var(--surf);color:var(--ayur-dark);cursor:pointer}
+ .menu-toggle span{display:block;width:19px;height:2px;border-radius:2px;background:currentColor;transition:transform .2s,opacity .2s}
+ .menu-toggle[aria-expanded="true"] span:first-child{transform:translateY(7px) rotate(45deg)}
+ .menu-toggle[aria-expanded="true"] span:nth-child(2){opacity:0}
+ .menu-toggle[aria-expanded="true"] span:last-child{transform:translateY(-7px) rotate(-45deg)}
+ .nav{display:none;position:absolute;top:calc(100% + 1px);left:0;right:0;z-index:25;flex-direction:column;align-items:stretch;gap:0;padding:8px;background:var(--surf);border:1px solid var(--line);border-radius:0 0 16px 16px;box-shadow:0 20px 30px -24px rgba(15,41,30,.55)}
+ .nav.is-open{display:flex}
+ .nav-link{display:flex;align-items:center;min-height:48px;padding:8px 12px;border-radius:8px}
+ .nav-link:hover,.nav-link[aria-current="location"]{background:var(--sage)}
+ .footer-inner{flex-direction:column}
+ .sticky{transition:transform .2s}
+ .order-visible .sticky{display:none}
+ .hero-visible .sticky{display:none}
+}
+@media(max-width:420px){
+ body{font-size:16px}
+ .hero{padding:40px 0 52px}
+ .hero-grid{gap:26px}
+ .hero .cta{flex-direction:column;align-items:stretch}
+ .hero .cta .btn{width:100%;padding-inline:16px}
+ .form{padding:26px 20px}
+ .checks{grid-template-columns:1fr}
+ .sticky{padding-inline:12px}
+ .sticky .btn{font-size:.95rem;padding-inline:12px}
+}
+@media(prefers-reduced-motion:reduce){
+ html{scroll-behavior:auto}
+ *,*::before,*::after{scroll-behavior:auto!important;transition-duration:.01ms!important;animation-duration:.01ms!important;animation-iteration-count:1!important}
+}
+
+/* Brand tokens and base control polish. */
+:root{--ayur-accent:#1d4a35;--ayur-gold:#e7a21b;--gold:#e7a21b}
+header{background:color-mix(in srgb,var(--bg) 94%,transparent)}
+.logo,.hero-product-brand{font-family:"Tiro Devanagari Hindi",serif}
+.nav-link,.btn{font-family:Hind,system-ui,sans-serif}
+.btn{background:var(--ayur-green);box-shadow:0 8px 22px -15px rgba(15,41,30,.65)}
+.btn:hover{background:#286141}
+.btn:focus-visible{background:#e7a21b;color:#1d3024}
+.scroll-progress{height:3px;background:transparent}
+.scroll-progress span{display:block;width:0;height:100%;background:var(--gold);transition:width .08s linear}
+button,input{font:inherit}
+button:disabled{cursor:wait;opacity:.72;transform:none!important;box-shadow:none!important}
+
+/* Parent check-in: clear progress and a light sliding prompt transition. */
+.checkin{margin-top:44px;padding:clamp(22px,4vw,40px);border:1px solid var(--line);border-radius:24px;background:var(--surf);box-shadow:0 24px 55px -38px rgba(15,41,30,.4)}
+.checkin h3{margin-top:10px;font-size:clamp(1.35rem,3vw,1.8rem)}
+.checkin-intro,.quiz-step{margin-top:8px;color:var(--mute)}
+.quiz-progress{height:9px;margin-top:22px;overflow:hidden;border-radius:99px;background:var(--line)}
+.quiz-progress span{display:block;width:0;height:100%;border-radius:inherit;background:linear-gradient(90deg,var(--g2),var(--gold));transition:width .35s ease}
+.quiz-step{font-size:.95rem}
+.quiz-question{margin-top:16px;font-size:1.2rem;font-weight:700;transition:opacity .14s,transform .14s}
+.quiz-question.is-changing{opacity:0;transform:translateX(12px)}
+.quiz-answers{display:flex;flex-wrap:wrap;gap:12px;margin-top:18px}
+.quiz-answer,.quiz-restart{min-height:48px;padding:9px 18px;border:1px solid var(--line);border-radius:12px;background:var(--surf);color:var(--ink);font-weight:600;cursor:pointer;transition:transform .16s,background .16s,border-color .16s}
+.quiz-answer:hover{background:var(--sage);border-color:var(--g2)}
+.quiz-result{margin-top:22px;padding:20px;border-radius:16px;background:var(--sage)}
+.quiz-result h4{font-size:1.25rem}
+.quiz-result p{margin:10px 0 16px;color:var(--mute)}
+.quiz-result .btn{margin-right:12px}
+.quiz-restart{margin-top:10px}
+
+/* Herb cards expose their traditional-use copy on demand. */
+.herb-card{min-width:0}
+.herb{position:relative;display:flex;width:100%;min-height:230px;flex-direction:column;align-items:flex-start;gap:11px;text-align:left;color:var(--ink);font:inherit;cursor:pointer}
+.herb-title{font:1.5rem/1.3 "Tiro Devanagari Hindi",serif;color:var(--ayur-green)}
+.herb-front-copy,.herb-hint{color:var(--mute);font-size:.96rem}
+.herb-hint{margin-top:auto}
+.herb-back{display:grid;gap:8px;padding-top:14px;border-top:1px solid var(--line);color:var(--mute);font-size:.96rem}
+.herb-back b{color:var(--ayur-green)}
+.herb[aria-expanded="true"]{border-color:var(--g2);background:var(--sage)}
+@media(hover:hover) and (pointer:fine){.herb-card,.cert,.incl li{transition:transform .22s,box-shadow .22s}.herb-card:hover{transform:translateY(-4px)}}
+
+/* Daily tracker: visible completion state and a measured progress ring. */
+.tracker-summary{display:flex;align-items:center;gap:20px;margin-top:30px}
+.tracker-summary>p{max-width:42ch;color:#d6e3d8}
+.progress-ring{position:relative;display:grid;flex:none;width:92px;height:92px;place-items:center}
+.progress-ring svg{position:absolute;inset:0;width:100%;height:100%;transform:rotate(-90deg)}
+.progress-ring circle{fill:none;stroke-width:7}
+.ring-track{stroke:rgba(255,255,255,.22)}
+.ring-value{stroke:var(--gold);stroke-linecap:round;stroke-dasharray:188.5;stroke-dashoffset:188.5;transition:stroke-dashoffset .45s ease}
+#tracker-count{position:relative;z-index:1;max-width:70px;text-align:center;font-size:.78rem;font-weight:700;line-height:1.25}
+.tl li{padding:0 14px 0 0}
+.routine-step{display:flex;width:100%;min-height:150px;flex-direction:column;align-items:flex-start;padding:0 12px 16px 0;border:0;border-radius:12px;background:transparent;color:inherit;text-align:left;cursor:pointer}
+.routine-step{position:static}
+.tl li::before{display:none}
+.step-check{position:absolute;top:0;left:0;display:grid;width:32px;height:32px;place-items:center;border:2px solid var(--gold);border-radius:50%;background:var(--ayur-green);color:transparent;font-weight:800;transition:background .2s,color .2s,transform .2s}
+.step-title{display:block;margin:48px 0 8px;font:1.3rem/1.4 "Tiro Devanagari Hindi",serif;font-weight:600;color:#fff}
+.step-copy{color:#d6e3d8;font-size:.97rem;line-height:1.6}
+.routine-step:hover .step-check{transform:scale(1.08)}
+.routine-step.is-done .step-check{background:var(--gold);color:#273323;animation:check-pop .24s ease-out}
+.routine-step.is-done .step-title{color:#f4cf82}
+.tracker-status{min-height:1.6em;margin-top:14px;color:#fff;font-size:.95rem}
+@keyframes check-pop{50%{transform:scale(1.2)}}
+.breathing-guide{display:flex;align-items:center;gap:28px;max-width:760px;margin-top:40px;padding:24px;border:1px solid rgba(255,255,255,.2);border-radius:22px;background:rgba(255,255,255,.07)}
+.breath-orb{display:grid;flex:none;width:112px;height:112px;place-items:center;border:1px solid rgba(231,162,27,.8);border-radius:50%;background:radial-gradient(circle,#f1d286 0,#e7a21b 72%,rgba(231,162,27,.4) 100%);color:#1d3024;text-align:center;font-size:.85rem;font-weight:700;transition:transform 4s ease-in-out}
+.breath-orb.is-inhaling{transform:scale(1.17)}
+.breathing-copy h3{color:#fff}
+.breathing-copy p{margin:7px 0 14px;color:#d6e3d8}
+.breath-toggle{min-width:128px}
+.goal{max-width:70ch}
+
+/* Count-up and swipeable testimony cards; placeholders remain until verified. */
+.trust-count{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 14px;margin-top:26px;padding:18px 22px;border:1px solid var(--line);border-radius:16px;background:var(--sage);width:fit-content;color:var(--mute)}
+.count-value{font:700 1.5rem/1.2 Hind,sans-serif;color:var(--ayur-green)}
+.count-note{margin-top:8px;color:var(--mute);font-size:.9rem}
+.testimonial-slider{max-width:760px;margin-top:22px}
+.testimonial-track{display:flex;gap:16px;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;scrollbar-width:none}
+.testimonial-track::-webkit-scrollbar{display:none}
+.testimonial-slide{flex:0 0 100%;min-width:0;scroll-snap-align:start}
+.slider-dots{display:flex;justify-content:center;gap:10px;margin-top:16px}
+.slider-dot{width:48px;height:48px;display:grid;place-items:center;border:0;border-radius:50%;background:transparent;cursor:pointer}
+.slider-dot::after{content:"";width:11px;height:11px;border-radius:50%;background:#aab7ad;transition:transform .2s,background .2s}
+.slider-dot.is-active::after{background:var(--ayur-green);transform:scale(1.3)}
+
+/* Native details remain functional, while their answer area opens smoothly. */
+details .faq-panel{display:grid;grid-template-rows:0fr;transition:grid-template-rows .28s ease}
+details[open] .faq-panel{grid-template-rows:1fr}
+details[open].is-closing .faq-panel{grid-template-rows:0fr}
+.faq-panel-inner{min-height:0;overflow:hidden}
+.faq-panel-inner p{padding:0 0 18px;color:var(--mute);max-width:70ch}
+details[open] .faq-panel-inner p{padding-top:2px}
+
+/* Form states and placeholder-only WhatsApp affordance. */
+.form-note{background:var(--sage);color:var(--mute)}
+.safe.is-success{color:var(--ayur-green);font-weight:700}
+.whatsapp-float{position:fixed;right:20px;bottom:24px;z-index:25;display:grid;width:58px;height:58px;place-items:center;border-radius:50%;background:#16845b;color:#fff;box-shadow:0 10px 26px -12px rgba(0,0,0,.55);transition:transform .2s,opacity .2s}
+.whatsapp-float svg{width:29px;height:29px;fill:currentColor}
+.whatsapp-float:hover{transform:translateY(-3px)}
+.whatsapp-float[aria-disabled="true"]{opacity:.55;cursor:not-allowed}
+.hero-visible .whatsapp-float,.order-visible .whatsapp-float{opacity:0;visibility:hidden;pointer-events:none}
+.sticky{z-index:24}
+.order-visible .sticky{display:none}
+
+/* Progressive enhancement: cards reveal in a short stagger only when motion is allowed. */
+.will-reveal{opacity:1;transform:translateY(14px);transition:transform .5s ease var(--reveal-delay,0ms)}
+.will-reveal.is-visible{transform:none}
+
+@media(max-width:860px){
+ .routine-step{min-height:0;padding-bottom:0}
+ .step-title{margin:2px 0 6px}
+ .step-check{top:0}
+ .tl li{padding-left:52px;padding-right:0}
+ .tl li::before{display:none}
+ .routine-step{padding-left:0}
+ .breathing-guide{align-items:flex-start}
+ .whatsapp-float{right:14px;bottom:90px}
+ .hero-visible .sticky{display:none}
+}
+@media(max-width:520px){
+ .checkin{padding:22px 18px}
+ .quiz-answers{flex-direction:column}
+ .quiz-answer{width:100%;text-align:left}
+ .quiz-result .btn{width:100%;margin-right:0}
+ .tracker-summary{align-items:flex-start;gap:14px}
+ .breathing-guide{flex-direction:column;align-items:center;text-align:center;padding:22px 18px}
+ .breath-orb{width:104px;height:104px}
+ .breathing-copy .btn{min-width:100%}
+ .trust-count{width:100%;display:grid}
+ .testimonial-slide{padding:22px}
+}
+@media(prefers-color-scheme:dark){
+ .offer-placeholder,.form-note{background:#302818;color:#f0d79e;border-color:#66502c}
+ .disclaimer{background:#141b16}
+ .disclaimer-placeholder{border-color:#66502c}
+ header .logo{color:var(--ink)}
+ .nav-link[aria-current="location"]{color:var(--g2)}
+ .btn{background:#1d4a35}
+ .btn:hover{background:#286141}
+ .hero-product-card{background:linear-gradient(145deg,#eee6d5,#dfd2ba)}
+ .parent-note h3,.pill b,.herb-title,.formula,.cert b,.guidance-card h3,.count-value{color:var(--g2)}
+ .routine{background:linear-gradient(180deg,#1d4a35 0%,#102c1e 100%)}
+ .quote{background:linear-gradient(135deg,#1d2c23,#24372c)}
+ .quote span{color:#d1dfd4}
+}
+@media(max-width:860px){
+ .menu-toggle{width:48px;height:48px}
+ header .header-cta{min-height:48px}
+ .checks li:hover,.cert:hover,figure:hover{transform:none}
+ .checks li:hover,.cert:hover,figure:hover{box-shadow:0 12px 28px -22px rgba(23,61,43,.18)}
+ .incl li:hover{transform:none}
+}
+@media(prefers-color-scheme:dark){.logo{color:var(--ink)}}
+input:focus-visible{outline:3px solid var(--focus);outline-offset:3px}
+@media(prefers-reduced-motion:reduce){
+ .will-reveal{opacity:1;transform:none;transition:none}
+ .quiz-question.is-changing{opacity:1;transform:none}
+ .breath-orb.is-inhaling{transform:none}
+ .routine-step.is-done .step-check{animation:none}
+}
+
+/* Content-matched local artwork for the routine, herb, and guidance sections. */
+.section-illustration{display:block;width:100%;height:auto;border:1px solid var(--line);border-radius:24px;box-shadow:0 24px 48px -36px rgba(15,41,30,.38)}
+.how-layout{display:grid;grid-template-columns:minmax(250px,.88fr) minmax(0,1.12fr);gap:clamp(24px,5vw,56px);align-items:center;margin-top:34px}
+.routine-illustration{aspect-ratio:1.52;object-fit:cover}
+.how-layout .pill{margin-top:0}
+.herb-showcase{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(220px,.7fr);align-items:center;gap:clamp(20px,4vw,44px);margin-top:30px}
+.herb-illustration{aspect-ratio:1.875;object-fit:cover}
+.herb-showcase p{padding:22px 24px;border-left:3px solid var(--gold);border-radius:0 16px 16px 0;background:var(--surf);color:var(--mute)}
+.herb-showcase b{display:block;margin-bottom:6px;color:var(--g);font-family:"Tiro Devanagari Hindi",serif;font-size:1.1rem}
+.routine-overview{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(220px,.9fr);gap:clamp(24px,5vw,56px);align-items:center;margin-top:30px}
+.tracker-illustration{aspect-ratio:1.52;object-fit:cover}
+.routine-overview .tracker-summary{margin-top:0}
+.guidance-layout{display:grid;grid-template-columns:minmax(220px,.78fr) minmax(0,1.22fr);align-items:center;gap:clamp(20px,4vw,40px);margin-top:28px}
+.guidance-illustration{aspect-ratio:1.16;object-fit:cover;object-position:center 42%}
+.guidance-layout .guidance-card{margin-top:0}
+@media(max-width:860px){
+ .how-layout,.herb-showcase,.routine-overview,.guidance-layout{grid-template-columns:1fr}
+ .how-layout,.routine-overview{gap:22px}
+ .how-layout .pill{margin-top:0}
+ .herb-illustration{aspect-ratio:1.6}
+ .herb-showcase p{padding:16px 18px}
+ .guidance-illustration{width:min(100%,560px);margin-inline:auto;aspect-ratio:1.45;object-fit:cover;object-position:center 36%}
+}
+@media(max-width:520px){
+ .section-illustration{border-radius:18px}
+ .routine-illustration,.tracker-illustration{aspect-ratio:1.3}
+ .herb-illustration{aspect-ratio:1.25}
+ .guidance-illustration{aspect-ratio:1.2}
+}
+
+/* Keep section links and CTAs visibly highlighted on hover, focus, and current section. */
+.nav-link{padding:8px 12px;border-radius:10px;transition:color .2s,background-color .2s}
+header .nav-link:hover,header .nav-link:focus-visible,header .nav-link[aria-current="location"],header .nav-link.is-highlighted{background:#e7a21b!important;color:#1d3024!important}
+header .header-cta:hover,header .header-cta:focus-visible{background:#e7a21b!important;color:#1d3024!important;box-shadow:0 8px 22px -12px rgba(231,162,27,.75)}
+.hero .btn:hover,.hero .btn:focus-visible,.final .btn:hover,.final .btn:focus-visible,.sticky .btn:hover,.sticky .btn:focus-visible{background:#e7a21b!important;color:#1d3024!important}
